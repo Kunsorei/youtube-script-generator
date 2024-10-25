@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useFetchVideos from '../hooks/useFetchVideos';
+import { formatNumber } from '../utils/utils';
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -33,6 +34,9 @@ const Home = () => {
           {videos.map((video) => (
             <li key={video.id.videoId} className='mb-4'>
               <h2 className='font-semibold'>{video.snippet.title}</h2>
+              <p className='text-orange-500'>
+                Views: {formatNumber(video.statistics.viewCount)}
+              </p>
               <img
                 src={video.snippet.thumbnails.default.url}
                 alt={video.snippet.title}
